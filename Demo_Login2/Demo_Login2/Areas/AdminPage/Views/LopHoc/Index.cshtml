@@ -1,0 +1,257 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPage/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Lớp học</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="@Url.Action("Index", "ThongKe")">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Lớp học</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                <button id="btnShowModal_Add" type="button" class="btn btn-outline-primary">
+                    <i class="fas fa-plus"></i>
+                    Thêm
+                </button>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Tên khóa</th>
+                            <th>Tên lớp</th>
+                            <th>Chủ nhiệm</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>K23</td>
+                            <td>T02</td>
+                            <td>Nguyễn Thị Bưởi</td>
+                            <td>
+                                <button id="btnShowModal_Edit" type="button" class="btn btn-outline-warning">
+                                    <i class="fas fa-pen"></i>
+                                    Sửa
+                                </button>
+                                <button id="btndeleteAccount" type="button" class="btn btn-outline-danger">
+                                    <i class="fas fa-trash"></i>
+                                    Xóa
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                </table>
+
+
+
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- .Popup-->
+<div class="modal fade" tabindex="-1" id="AddModal" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-md">
+        @*modal-md*@
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Thêm lớp học</h3>
+                <button type="button" class="close" data-dismiss="modal">
+                    x
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="khoahoc" class="col-sm-4 col-form-label">Khóa</label>
+                        <div class="col-sm-8">
+                            <select name="tinhtrang" id="khoahoc" class="form-control">
+                                <option value="volvo">K23</option>
+                                <option value="volvo">K24</option>
+                                <option value="volvo">K25</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="loaidaotao" class="col-sm-4 col-form-label">Tên lớp</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="loaidaotao" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="covan" class="col-sm-4 col-form-label">Cố vấn học tập</label>
+                        <div class="col-sm-8">
+                            <select name="tinhtrang" id="covan" class="form-control">
+                                <option value="volvo">Nguyen Van A</option>
+                                <option value="volvo">Nguyen Van B</option>
+                                <option value="volvo">Nguyen Van C</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnHideModal_Add" class="btn btn-light">
+                    Hủy
+                </button>
+                <button type="button" id="btnAcceptModal_Add" class="btn btn-primary">
+                    Lưu
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="EditModal" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Sửa lớp học</h3>
+                <button type="button" class="close" data-dismiss="modal">
+                    x
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="khoahoc" class="col-sm-4 col-form-label">Khóa</label>
+                        <div class="col-sm-8">
+                            <select name="tinhtrang" id="khoahoc" class="form-control">
+                                <option value="volvo">K23</option>
+                                <option value="volvo">K24</option>
+                                <option value="volvo">K25</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="loaidaotao" class="col-sm-4 col-form-label">Tên lớp</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="loaidaotao" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="covan" class="col-sm-4 col-form-label">Cố vấn học tập</label>
+                        <div class="col-sm-8">
+                            <select name="tinhtrang" id="covan" class="form-control">
+                                <option value="volvo">Nguyen Van A</option>
+                                <option value="volvo">Nguyen Van B</option>
+                                <option value="volvo">Nguyen Van C</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnHideModal_Edit" class="btn btn-light">
+                    Hủy
+                </button>
+                <button type="button" id="btnAcceptModal_Edit" class="btn btn-primary">
+                    Lưu
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.Popup-->
+<script src="~/Content/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnShowModal_Add").click(function () {
+            $("#AddModal").modal('show');
+        });
+
+        $("#btnHideModal_Add").click(function () {
+            $("#AddModal").modal('hide');
+        });
+
+        $("#btnShowModal_Edit").click(function () {
+            $("#EditModal").modal('show');
+        });
+
+        $("#btnHideModal_Edit").click(function () {
+            $("#EditModal").modal('hide');
+        });
+
+        $("#btnShowModal_Detail").click(function () {
+            $("#DetailModal").modal('show');
+        });
+
+        $("#btnHideModal_Detail").click(function () {
+            $("#DetailModal").modal('hide');
+        });
+
+        $("#btndeleteAccount").click(function () {
+            swal({
+                title: "Xác nhận?",
+                text: "Bạn có chắc muốn xóa!!!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Xóa thành công", {
+                            icon: "success",
+                        });
+                    }
+                });
+        });
+        $("#btnAcceptModal_Add").click(function () {
+            swal({
+                title: "Xác nhận?",
+                text: "Bạn có chắc muốn lưu!!!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Lưu thành công", {
+                            icon: "success",
+                        });
+                    }
+                });
+        });
+        $("#btnAcceptModal_Edit").click(function () {
+            swal({
+                title: "Xác nhận?",
+                text: "Bạn có chắc muốn lưu!!!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Lưu thành công", {
+                            icon: "success",
+                        });
+                    }
+                });
+        });
+
+    });
+</script>
+
